@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Cambia esto si tu rama principal es 'master'
+      - master
 
 jobs:
   deploy:
