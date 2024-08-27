@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import useFetch from '../hooks/useFetch';
+import useFetch from '../hooks/UseFetch';
 import '../style/Login.css'
 
 const Login = () => {
