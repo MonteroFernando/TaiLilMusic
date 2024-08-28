@@ -14,7 +14,7 @@ const AlbumForm = () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}harmonyhub/artists/`, {
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Token ${token}`
         }
       });
       const result = await response.json();
@@ -33,7 +33,7 @@ const AlbumForm = () => {
     {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Token ${token}`,
         'Content-Type': 'application/json'
       },
     }

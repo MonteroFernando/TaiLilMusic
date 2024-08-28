@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import AlbumList from '../components/AlbumList';
 import Navbar from '../components/Navbar';
+import AlbumList from '../components/AlbumList';
 import AlbumForm from '../components/AlbumForm';
 
-function Main() {
+function Albums() {
   const [showForm, setShowForm] = useState(false);
 
   const toggleForm = () => {
@@ -24,4 +23,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Albums;

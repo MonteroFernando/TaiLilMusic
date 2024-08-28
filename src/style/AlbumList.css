@@ -5,3 +5,17 @@
     margin-bottom: 20px;
   }
   
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .pagination-controls button {
+    padding: 5px 10px;
+    margin: 0 5px;
+  }
+  
+  .pagination-controls span {
+    align-self: center;
+  }
