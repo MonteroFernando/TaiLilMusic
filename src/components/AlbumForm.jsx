@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useFetch from '../hooks/UseFetch';
 import { useAuth } from '../context/AuthContext';
+import '../style/AlbumForm.css';
 
 const AlbumForm = () => {
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
   const [artist, setArtist] = useState('');
+  const [artists, setArtists] = useState([]);
   const { token } = useAuth();
+
+  const fetchArtists = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}harmonyhub/artists/`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const result = await response.json();
+      setArtists(result.results);
+    } catch (error) {
+      console.error('Error fetching artists:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchArtists();
+  }, [token]);
 
   const [{ data, isLoading, isError }, doFetch] = useFetch(
     `${import.meta.env.VITE_API_BASE_URL}harmonyhub/albums/`,
@@ -35,7 +55,7 @@ const AlbumForm = () => {
   };
 
   return (
-    <div>
+    <div className="album-form-container">
       <h2>Alta de Álbum</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -58,17 +78,23 @@ const AlbumForm = () => {
         </div>
         <div>
           <label>Artista:</label>
-          <input
-            type="number"
+          <select
             value={artist}
             onChange={(e) => setArtist(e.target.value)}
             required
-          />
+          >
+            <option value="" disabled>Selecciona un artista</option>
+            {artists.map(artist => (
+              <option key={artist.id} value={artist.id}>
+                {artist.name}
+              </option>
+            ))}
+          </select>
         </div>
         <button type="submit" disabled={isLoading}>Crear Álbum</button>
       </form>
       {isError && <p>Hubo un error al crear el álbum.</p>}
-      {data && <p>Álbum creado con éxito: {data.title}</p>}
+      {data && <p className="success">Álbum creado con éxito: {data.title}</p>}
     </div>
   );
 };

@@ -1,24 +1,55 @@
-.album-card{
-    display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between; /
-}
-
-
-.album-card img{
-    width: 300px;
-}
-
-.album-cont{
-    display: inline-block;
+.album-card {
+    position: relative;
+    width: 400px;
+    margin: 20px;
+  }
+  
+  .album-cont {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.726);
     border-radius: 10px;
     color: azure;
-    width: 400 px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-
-}
+  }
+  
+  .album-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .edit-form label {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-form select {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .edit-form button {
+    margin-top: 10px;
+  }
+  
+  .delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .delete-button:disabled {
+    background-color: darkred;
+    cursor: not-allowed;
+  }
+  
