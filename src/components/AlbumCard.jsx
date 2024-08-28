@@ -15,13 +15,12 @@ const AlbumCard = ({ album, onUpdate, onDelete }) => {
 
   const { token } = useAuth();
 
-  // Fetch artist name
   useEffect(() => {
     const fetchArtistName = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}harmonyhub/artists/${artistId}`, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Token ${token}`,
           },
         });
         const result = await response.json();
@@ -39,7 +38,7 @@ const AlbumCard = ({ album, onUpdate, onDelete }) => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}harmonyhub/artists`, {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Token ${token}`,
           },
         });
         const result = await response.json();
@@ -57,14 +56,14 @@ const AlbumCard = ({ album, onUpdate, onDelete }) => {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      Authorization: `Token ${token}`,
     },
   });
 
   const [{ isLoading: isDeleting }, doDelete] = useFetch(`${import.meta.env.VITE_API_BASE_URL}harmonyhub/albums/${id}`, {
     method: 'DELETE',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Token ${token}`,
     },
   });
 
