@@ -30,7 +30,8 @@ const AlbumList = () => {
   };
 
   const handleDelete = (id) => {
-    setAlbums(albums.filter(album => album.id !== id));
+    setAlbums(albums.filter(album => album.id !== id)); 
+  };
 
   return (
     <div className='AlbumList'>
