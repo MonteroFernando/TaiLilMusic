@@ -9,7 +9,7 @@ import './style/App.css'
 const App = () => {
   return (
     <AuthProvider>
-      <Routes basename="/TaiLilMusic">
+      <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/main" element={<Main />} />
         <Route path="/albums" element={<Albums />} />
